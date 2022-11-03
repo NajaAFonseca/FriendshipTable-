@@ -1,5 +1,4 @@
 ---
-layout: post
 author: Naja Fonseca
 permalink: /snake-game
 ---
