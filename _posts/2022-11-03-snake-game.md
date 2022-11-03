@@ -62,7 +62,26 @@ permalink: /snake-game
     // Vertical velocity
     let dy = 0;
 
-    
+    gameOver(message) {
+        const gameOverBox = document.getElementById("game-over");
+
+        gameOverBox.style.display = "block";
+        gameOverBox.innerHTML = message;
+
+        beginGameButton.style.display = "block";
+        beginGameButton.textContent = "Restart";
+    }
+
+    beginGameButton.addEventListener('click', function() {
+    if ( beginGameButton.textContent.trim() === 'Start' ) {
+        game.startGame();
+
+        this.style.display = 'none';
+        document.getElementById('play-area').style.opacity = '1';
+    } else if ( beginGameButton.textContent.trim() === 'Restart' ) {
+        window.location.reload();
+    }
+});
 
     // Get the canvas element (turns into an object)
     const snakeboard = document.getElementById("snakeboard");
