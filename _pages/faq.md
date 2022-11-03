@@ -4,8 +4,30 @@ title: FAQ
 permalink: /faq/
 ---
 
-This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
+## Frequently Asked Questions
+
+ Q: How do you play Snake? 
+ A: Move the snake around to eat the blocks!
 
 
+Q: How do you move the snake? 
+A: Use the arrow keys to move.
 
-[^1]:a blogging platform that natively supports Jupyter notebooks in addition to other formats.
+Q: Can you move through the snakes body? 
+A: If you hit the snake's tail you lose!
+
+Q: What happens if you run into the border? 
+A: You lose if your snake hits the border :(
+
+Q: How do you win Snake? 
+A: Win snake by getting all the blocks!
+
+Q: Is snake fun? 
+A: Yes! Snake is a super fun interactive game
+
+Q: What College Board criteria does this game meet? 
+A: All because we just amazing like that
+
+Q: Who is the coolest teacher? 
+A: Mr. Yeung of course
+
