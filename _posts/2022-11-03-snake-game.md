@@ -61,8 +61,11 @@ permalink: /snake-game
     let dx = 10;
     // Vertical velocity
     let dy = 0;
-    
-    
+
+
+    const playagain = document.getElementById("playagain");
+    <button onclick="playAgain()">Restart or Play Again</button>
+
     // Get the canvas element (turns into an object)
     const snakeboard = document.getElementById("snakeboard");
     // Return a two dimensional drawing context (makes board 2d)
