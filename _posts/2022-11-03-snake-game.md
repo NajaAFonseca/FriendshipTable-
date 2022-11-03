@@ -28,7 +28,7 @@ permalink: /snake-game
       #score {
         text-align: center;
         font-size: 140px;
-        text: score;
+      }
       }
 
   <!--linking the javascript page to the html snake md page-->
@@ -61,8 +61,16 @@ permalink: /snake-game
     let dx = 10;
     // Vertical velocity
     let dy = 0;
-    
-    
+
+    let playAgain = document.querySelector(".playAgain");
+
+    document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("keyup", control);
+      createBoard();
+      startGame();
+      playAgain.addEventListener("click", replay);
+    });
+
     // Get the canvas element (turns into an object)
     const snakeboard = document.getElementById("snakeboard");
     // Return a two dimensional drawing context (makes board 2d)
