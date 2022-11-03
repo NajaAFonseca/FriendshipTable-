@@ -1,3 +1,9 @@
+---
+layout: post
+author: Naja Fonseca
+permalink: /snake-game
+---
+
 <!DOCTYPE html>
 <html>
   <head>
