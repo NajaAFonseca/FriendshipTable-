@@ -1,3 +1,5 @@
+
+
 const canvas=document.getElementById('game');
 const ctx=canvas.getContext('2d');
 //increase snake size 
@@ -180,4 +182,4 @@ function keyDown()
     }
 }
 
- drawGame();
+ drawGame(); 
