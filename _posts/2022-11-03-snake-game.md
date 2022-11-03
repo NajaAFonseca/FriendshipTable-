@@ -39,7 +39,6 @@ permalink: /snake-game
 
   <script>
     // Beautifying the border and snake
-    // t
     const board_border = 'black';
     const board_background = "white";
     const snake_col = 'lightblue';
