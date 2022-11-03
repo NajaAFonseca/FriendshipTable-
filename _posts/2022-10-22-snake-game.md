@@ -1,3 +1,10 @@
+---
+layout: page
+title: Snake Game :)
+author: Naja Fonseca
+permalink: /snake-game
+---
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -194,45 +201,6 @@
         // Remove the last part of snake body
         snake.pop();
       }
-    }
-
-    function isGameOver(){
-    let gameOver=false;
-    //check whether game has started
-    if(yvelocity===0 && xvelocity===0){
-        return false;
-    }
-    if(headX<0){//if snake hits left wall
-        gameOver=true;
-    }
-    else if(headX===tileCount){//if snake hits right wall
-        gameOver=true;
-    }
-    else if(headY<0){//if snake hits wall at the top
-        gameOver=true;
-    }
-    else if(headY===tileCount){//if snake hits wall at the bottom
-        gameOver=true;
-    }
-
-    //stop the game when snake bumps into itself
-
-     for(let i=0; i<snakeParts.length;i++){
-         let part=snakeParts[i];
-         if(part.x===headX && part.y===headY){//check whether any part of snake is occupying the same space
-             gameOver=true;
-             break; // to break out of for loop
-         }
-     }
-    //display text Game Over
-    if(gameOver){
-     ctx.fillStyle="white";
-     ctx.font="50px verdana";
-     ctx.fillText("Game Over! ", canvas.clientWidth/6.5, canvas.clientHeight/2);//position our text in center
-    }
-
-    return gameOver;// this will stop the execution of the draw game method
-    S}
-    
+    }    
   </script>
 </html>
