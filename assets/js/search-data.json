@@ -68,10 +68,10 @@
   
     
         ,"post6": {
-            "title": "Title",
-            "content": "",
-            "url": "https://najaafonseca.github.io/FriendshipTable-/2022/11/01/Learned.html",
-            "relUrl": "/2022/11/01/Learned.html",
+            "title": "Code Blog",
+            "content": "What is an id? . The id() method returns a unique integer (identity) of a passed argument object. It takes a single thing inside the parameter, sort of like a variable inside and can tell you what it is. So say you have an assigned variable, and when you put it in the id and ask the code to output the id, the id will tell you what the variable is. “Id of variable is …” . What is dx and dy? . dx and dy is the amount of change in the position. dx changes the horizontal position of a variable and dy changes the vertical position of a variable. . What does a const do in Javascript? . A const does not represent a constant value, but a constant reference to a value. You cannot reassign constant values/arrays/objects. . What is the getElementById command do and how does it connect to DOM? . When a web page is loaded, the browser creates a Document Object Model of the page. The DOM defines a standard for accessing documents. . A DOM connects to the getElementById command because using a Id is the easiest way to find an HTML element in the DOM. If the element is found, the method will return the element as an object (in element). Which is why when running the getElementById command for both the snakeboard and to make it 2d comes out as an object. . What is the EventListener() method do? . The addEventListener() method attaches an event handler to the specified element. The addEventListener() method attaches an event handler to an element without overwriting existing event handlers. When using the addEventListener() method, the JavaScript is separated from the HTML markup, for better readability and allows you to add event listeners even when you do not control the HTML markup. . What does ctx mean in Javascript? . ctx is just a variable that is the abbreviation of ConTeXt. .",
+            "url": "https://najaafonseca.github.io/FriendshipTable-/markdown/jupyter/2022/11/01/Learned.html",
+            "relUrl": "/markdown/jupyter/2022/11/01/Learned.html",
             "date": " • Nov 1, 2022"
         }
         
