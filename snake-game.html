@@ -4,22 +4,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Snake Game Og | FRIENDSHIP TABLE</title>
+<title>Snake Game 2 | FRIENDSHIP TABLE</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Snake Game Og" />
+<meta property="og:title" content="Snake Game 2" />
 <meta name="author" content="Naja Fonseca" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="&lt;!DOCTYPE html&gt; Snake Game" />
-<meta property="og:description" content="&lt;!DOCTYPE html&gt; Snake Game" />
+<meta name="description" content="&lt;!DOCTYPE html&gt; JavaScript Snake game" />
+<meta property="og:description" content="&lt;!DOCTYPE html&gt; JavaScript Snake game" />
 <link rel="canonical" href="https://najaafonseca.github.io/FriendshipTable-/snake-game" />
 <meta property="og:url" content="https://najaafonseca.github.io/FriendshipTable-/snake-game" />
 <meta property="og:site_name" content="FRIENDSHIP TABLE" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2022-10-19T00:00:00-05:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Snake Game Og" />
+<meta property="twitter:title" content="Snake Game 2" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Naja Fonseca"},"dateModified":"2022-10-19T00:00:00-05:00","datePublished":"2022-10-19T00:00:00-05:00","description":"&lt;!DOCTYPE html&gt; Snake Game","headline":"Snake Game Og","mainEntityOfPage":{"@type":"WebPage","@id":"https://najaafonseca.github.io/FriendshipTable-/snake-game"},"url":"https://najaafonseca.github.io/FriendshipTable-/snake-game"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Naja Fonseca"},"dateModified":"2022-10-19T00:00:00-05:00","datePublished":"2022-10-19T00:00:00-05:00","description":"&lt;!DOCTYPE html&gt; JavaScript Snake game","headline":"Snake Game 2","mainEntityOfPage":{"@type":"WebPage","@id":"https://najaafonseca.github.io/FriendshipTable-/snake-game"},"url":"https://najaafonseca.github.io/FriendshipTable-/snake-game"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/FriendshipTable-/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://najaafonseca.github.io/FriendshipTable-/feed.xml" title="FRIENDSHIP TABLE" /><link rel="shortcut icon" type="image/x-icon" href="/FriendshipTable-/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -74,7 +74,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Snake Game Og</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-10-19T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Snake Game 2</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-10-19T00:00:00-05:00" itemprop="datePublished">
         Oct 19, 2022
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -93,195 +93,19 @@ window.onload = wrap_img;
   <div class="post-content e-content" itemprop="articleBody">
     <p>&lt;!DOCTYPE html&gt;</p>
 <html>
-  <head>
-    <!-- title of game -->
-  	<title>Snake Game</title>
-    <link href="https://fonts.googleapis.com/css?family=Antic+Slab" rel="stylesheet" />
+<head>
+<title>JavaScript Snake game</title>
+<style>
+    canvas {background: black}
+</style>
 
-  </head>
+<script src=""></script>
+</head>
 
-  <body>
-    <!--setting the canvas up as a id and canvas size-->
-    <canvas id="snakeboard" width="400" height="400"></canvas>
-    <script src="assets/js/vendor/snake-game-og.js"></script>
-
-  <!--setting up the position of the board/canvas-->
-    <style>
-      #snakeboard {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-      #score {
-        text-align: center;
-        font-size: 100px;
-      }
-    </style>
-  </body>
-
-  <!--Beautifying the border and snake--> 
-  <script>
-    const board_border = 'green';
-    const board_background = "lightblue";
-    const snake_col = 'green';
-    const snake_border = 'pink';
-
-    // setting up the snakes' position  
-    let snake = [
-      {x: 200, y: 200},
-      {x: 190, y: 200},
-      {x: 180, y: 200},
-      {x: 170, y: 200},
-      {x: 160, y: 200}
-    ]
-
-
-    let score = 0;
-    // True if changing direction
-    let changing_direction = false;
-    // Horizontal velocity
-    let food_x;
-    let food_y;
-    let dx = 10;
-    // Vertical velocity
-    let dy = 0;
-    
-    // Get the canvas element
-    const snakeboard = document.getElementById("snakeboard");
-    // Display as a 2d drawing
-    const snakeboard_ctx = snakeboard.getContext("2d");
-    // Start game
-    main();
-
-    // generate food
-    gen_food();
-
-    document.addEventListener("keydown", change_direction);
-    
-    // main function called repeatedly to keep the game running
-    function main() {
-
-        if (has_game_ended()) return;
-
-        changing_direction = false;
-        setTimeout(function onTick() {
-        clearboard();
-        move_snake();
-        drawSnake();
-        // Call main again
-        main();
-        }, 100)
-    }
-    
-    // drawing a border around the canvas
-    function clear_board() {
-      //  Select the colour to fill the drawing
-      snakeboard_ctx.fillStyle = board_background;
-      //  The colour for the border of the canvas
-      snakeboard_ctx.strokestyle = board_border;
-      // Drawing a "filled" rectangle to cover the entire canvas, the center of the canvas
-      snakeboard_ctx.fillRect(0, 0, snakeboard.width, snakeboard.height);
-      // Drawing a "border" around the entire canvas
-      snakeboard_ctx.strokeRect(0, 0, snakeboard.width, snakeboard.height);
-    }
-    
-    // Drawing the snake on the canvas
-    function drawSnake() {
-      // Drawing each individual part of the snake
-      snake.forEach(drawSnakePart)
-    }
-    
-    // Drawing one snake part
-    function drawSnakePart(snakePart) {
-
-      // Setting the colour of the snake part
-      snakeboard_ctx.fillStyle = snake_col;
-      // Setting the border colour of the snake part
-      snakeboard_ctx.strokestyle = snake_border;
-      // Drawing a "filled" rectangle to represent the snake on the coordinates
-      snakeboard_ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
-      // Drawing a border around the snake part
-      snakeboard_ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
-    }
-
-
-    // drawing the food :p
-    function drawFood() {
-      snakeboard_ctx.fillStyle = 'lightblue';
-      snakeboard_ctx.strokestyle = 'darkgreen';
-      snakeboard_ctx.fillRect(food_x, food_y, 10, 10);
-      snakeboard_ctxstrokeRect(food_x, food_y, 10, 10);
-    }
-
-    function has_game_ended() {
-      for (let i = 4; < snake.length; i++) {
-        if (snake [i].x === snake [0].x && snake[i].y === snake [0].y) return true
-      }
-      const hitLeftWall = snake[0].x < 0;
-      const hitRightWall = snake[0].x > snakeboard.width - 10;
-      const hitToptWall = snake[0].y < 0;
-      const hitBottomWall = snake[0].y > snakeboard.height - 10;
-      return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
-    }
-
-    // new random food location 
-    function random_food(min, max) {
-        return Math.round((Math.random () * (max-min) + min) / 10 ) * 10;
-    }
-
-    function gen_food()
-    {
-      food_x = random_food(0, snakeboard.width - 10);
-      food_y = random_food(0, snakeboard.height - 10);
-      snake.forEach(function has _snake_eaten_food(part) {
-        const has_eaten = part.x == food_x && party.y == food_y;
-        if (has_eaten) gen_food();
-      });
-    }
-
-    function change_direction(event) {
-      const LEFT_KEY = 37;
-      const RIGHT_KEY = 39;
-      const UP_KEY = 38;
-      const DOWN_KEY = 40;
-
-     // Prevent the snake from reversing
-    
-      if (changing_direction) return;
-      changing_direction = true;
-      const keyPressed = event.keyCode;
-      const goingUp = dy === -10;
-      const goingDown = dy === 10;
-      const goingRight = dx === 10;
-      const goingLeft = dx === -10;
-      if (keyPressed === LEFT_KEY && !goingRight) {
-        dx = -10;
-        dy = 0;
-      }
-      if (keyPressed === UP_KEY && !goingDown) {
-        dx = 0;
-        dy = -10;
-      }
-      if (keyPressed === RIGHT_KEY && !goingLeft) {
-        dx = 10;
-        dy = 0;
-      }
-      if (keyPressed === DOWN_KEY && !goingUp) {
-        dx = 0;
-        dy = 10;
-      }
-    }
-
-    function move_snake() {
-      // Snake's head
-      const head = {x: snake[0].x + dx, y: snake[0] + dy};
-      // Add head to body
-      snake.unshift(head);
-      snake.pop();
-    }
-
-  </script>
+<body onload="init();">
+    <canvas id="myCanvas" width="300" height="300">
+    </canvas>
+</body>
 </html>
 
   </div><a class="u-url" href="/FriendshipTable-/snake-game" hidden></a>
