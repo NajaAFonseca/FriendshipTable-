@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About Me
-permalink: /about/
+title: FAQ
+permalink: /faq/
 ---
 
 This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
