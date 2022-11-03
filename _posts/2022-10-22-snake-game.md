@@ -8,6 +8,7 @@ permalink: /snake-game
 <!DOCTYPE html>
 <html>
   <head>
+    <!--titling our game-->
   	<title>Snake Game</title>
   </head>
 
