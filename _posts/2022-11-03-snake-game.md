@@ -28,7 +28,7 @@ permalink: /snake-game
       #score {
         text-align: center;
         font-size: 140px;
-        text: score;
+      }
       }
 
   <!--linking the javascript page to the html snake md page-->
