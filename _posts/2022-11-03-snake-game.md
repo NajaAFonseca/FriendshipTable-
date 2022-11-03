@@ -15,8 +15,10 @@ permalink: /snake-game
   <body>
 
     <div id="score">0</div>
+  <!--setting up the canvas-->
     <canvas id="snakeboard" width="400" height="400"></canvas>
 
+  <!--stying the snakeboard and scoreboard-->
     <style>
       #snakeboard {
         position: absolute;
@@ -27,6 +29,7 @@ permalink: /snake-game
       #score {
         text-align: center;
         font-size: 140px;
+        text: score;
       }
 
     <script src="assets/js/snake2.js"></script>
