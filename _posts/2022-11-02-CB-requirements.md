@@ -14,7 +14,6 @@ What is the requirement?
 Did we meet this expectation?
 YEP
 - On our pages we have a way to acess our programs purpose and function
-[insert photo of page or link]
 - You can also see our code in the backend that makes our snake game possible!
 
 # Data Abstraction
@@ -27,7 +26,6 @@ What is the requirement?
 Did we meet this expectation?
 I HOPE SO
 - We created an API that will represent all the frequently asked questions about our game
-[insert photo of page or link]
 - This creates a stress-free and relaxing experience for you and the rest of our users, fulfilling our goal and making everyone happy!
 
 # Managing Complexity
@@ -39,7 +37,6 @@ What is the requirement?
 Did we meet this expectation?
 YES
 - We used this API of the frequently asked questions to manage difficulties and create efficiency in our program
-[insert photo of page or link]
 - Without this API our data would not be interactable
 
 # Procedural Abstraction
@@ -51,7 +48,6 @@ What is the requirement?
 Did we meet this expectation?
 OF COURSE
 - On example of us using procedural abstraction is linking the arrow keys to how the snake moves and which way it moves.
-[insert photo of page or link]
 - Without this procedure the snake could not move and capture the block targets
 
 # Algorithm Implementation
