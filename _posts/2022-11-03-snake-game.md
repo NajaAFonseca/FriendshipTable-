@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Snake Game :)
 author: Naja Fonseca
 permalink: /snake-game
@@ -146,6 +145,7 @@ permalink: /snake-game
       return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
     }
 
+
     function random_food(min, max) {
       return Math.round((Math.random() * (max-min) + min) / 10) * 10;
     }
@@ -197,6 +197,8 @@ permalink: /snake-game
       }
     }
 
+    // moving the snake and adding to its body if it eats
+    // adding score if the snake eats
     function move_snake() {
       // Create the new Snake's head
       const head = {x: snake[0].x + dx, y: snake[0].y + dy};
