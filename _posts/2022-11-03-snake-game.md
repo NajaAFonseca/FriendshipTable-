@@ -62,14 +62,7 @@ permalink: /snake-game
     // Vertical velocity
     let dy = 0;
 
-    let playAgain = document.querySelector(".playAgain");
-
-    document.addEventListener("DOMContentLoaded", function () {
-      document.addEventListener("keyup", control);
-      createBoard();
-      startGame();
-      playAgain.addEventListener("click", replay);
-    });
+    
 
     // Get the canvas element (turns into an object)
     const snakeboard = document.getElementById("snakeboard");
