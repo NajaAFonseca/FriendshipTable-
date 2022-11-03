@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://najaafonseca.github.io/FriendshipTable-/2022/11/01/Learned.html</loc>
+<lastmod>2022-11-01T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>https://najaafonseca.github.io/FriendshipTable-/fastpages/jupyter/2022/11/01/faq.html</loc>
+<lastmod>2022-11-01T00:00:00-05:00</lastmod>
+</url>
+<url>
 <loc>https://najaafonseca.github.io/FriendshipTable-/cb/2022/11/02/CB-requirements.html</loc>
 <lastmod>2022-11-02T00:00:00-05:00</lastmod>
 </url>
 <url>
 <loc>https://najaafonseca.github.io/FriendshipTable-/data/faq</loc>
-<lastmod>2022-11-02T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>https://najaafonseca.github.io/FriendshipTable-/fastpages/jupyter/2022/11/02/faq.html</loc>
 <lastmod>2022-11-02T00:00:00-05:00</lastmod>
 </url>
 <url>
@@ -38,6 +42,6 @@
 </url>
 <url>
 <loc>https://najaafonseca.github.io/FriendshipTable-/frontend/calculator.html</loc>
-<lastmod>2022-11-03T15:46:17-05:00</lastmod>
+<lastmod>2022-11-03T15:48:56-05:00</lastmod>
 </url>
 </urlset>
