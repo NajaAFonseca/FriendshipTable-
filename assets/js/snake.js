@@ -1,227 +1,177 @@
-var canvas;
-var ctx;
+    //Beautifying the border and snake
+    const board_border = 'green';
+    const board_background = "lightblue";
+    const snake_col = 'green';
+    const snake_border = 'pink';
 
-var head;
-var apple;
-var ball;
+    // setting up the snakes' position  
+    let snake = [
+      {x: 200, y: 200},
+      {x: 190, y: 200},
+      {x: 180, y: 200},
+      {x: 170, y: 200},
+      {x: 160, y: 200}
+    ]
 
-var dots;
-var apple_x;
-var apple_y;
+    let score = 0;
+    // True if changing direction
+    let changing_direction = false;
+    // Horizontal velocity
+    let food_x;
+    let food_y;
+    let dx = 10;
+    // Vertical velocity
+    let dy = 0;
+    
+    // Get the canvas element
+    const snakeboard = document.getElementById("snakeboard");
+    // Display as a 2d drawing
+    const snakeboard_ctx = snakeboard.getContext("2d");
+    // Start game
+    main();
 
-var leftDirection = false;
-var rightDirection = true;
-var upDirection = false;
-var downDirection = false;
-var inGame = true;
+    // generate food
+    gen_food();
 
-const DOT_SIZE = 10;
-const ALL_DOTS = 900;
-const MAX_RAND = 29;
-const DELAY = 140;
-const C_HEIGHT = 300;
-const C_WIDTH = 300;
+    document.addEventListener("keydown", change_direction);
+    
+    // main function called repeatedly to keep the game running
+    function main() {
 
-const LEFT_KEY = 37;
-const RIGHT_KEY = 39;
-const UP_KEY = 38;
-const DOWN_KEY = 40;
+        if (has_game_ended()) return;
 
-var x = new Array(ALL_DOTS);
-var y = new Array(ALL_DOTS);
-
-function init() {
-
-    canvas = document.getElementById('myCanvas');
-    ctx = canvas.getContext('2d');
-
-    loadImages();
-    createSnake();
-    locateApple();
-    setTimeout("gameCycle()", DELAY);
-}
-
-function loadImages() {
-
-    head = new Image();
-    head.src = 'head.png';
-
-    ball = new Image();
-    ball.src = 'dot.png';
-
-    apple = new Image();
-    apple.src = 'apple.png';
-}
-
-function createSnake() {
-
-    dots = 3;
-
-    for (var z = 0; z < dots; z++) {
-        x[z] = 50 - z * 10;
-        y[z] = 50;
+        changing_direction = false;
+        setTimeout(function onTick() {
+        clearboard();
+        move_snake();
+        drawSnake();
+        // Call main again
+        main();
+        }, 100)
     }
-}
-
-function checkApple() {
-
-    if ((x[0] == apple_x) && (y[0] == apple_y)) {
-
-        dots++;
-        locateApple();
+    
+    // drawing a border around the canvas
+    function clear_board() {
+      //  Select the colour to fill the drawing
+      snakeboard_ctx.fillStyle = board_background;
+      //  The colour for the border of the canvas
+      snakeboard_ctx.strokestyle = board_border;
+      // Drawing a "filled" rectangle to cover the entire canvas, the center of the canvas
+      snakeboard_ctx.fillRect(0, 0, snakeboard.width, snakeboard.height);
+      // Drawing a "border" around the entire canvas
+      snakeboard_ctx.strokeRect(0, 0, snakeboard.width, snakeboard.height);
     }
-}
-
-function doDrawing() {
-
-    ctx.clearRect(0, 0, C_WIDTH, C_HEIGHT);
-
-    if (inGame) {
-
-        ctx.drawImage(apple, apple_x, apple_y);
-
-        for (var z = 0; z < dots; z++) {
-
-            if (z == 0) {
-                ctx.drawImage(head, x[z], y[z]);
-            } else {
-                ctx.drawImage(ball, x[z], y[z]);
-            }
-        }
-    } else {
-
-        gameOver();
+    
+    // Drawing the snake on the canvas
+    function drawSnake() {
+      // Drawing each individual part of the snake
+      snake.forEach(drawSnakePart)
     }
-}
+    
+    // Drawing one snake part
+    function drawSnakePart(snakePart) {
 
-function gameOver() {
-
-    ctx.fillStyle = 'white';
-    ctx.textBaseline = 'middle';
-    ctx.textAlign = 'center';
-    ctx.font = 'normal bold 18px serif';
-
-    ctx.fillText('Game over', C_WIDTH/2, C_HEIGHT/2);
-}
-
-function checkApple() {
-
-    if ((x[0] == apple_x) && (y[0] == apple_y)) {
-
-        dots++;
-        locateApple();
-    }
-}
-
-function move() {
-
-    for (var z = dots; z > 0; z--) {
-
-        x[z] = x[(z - 1)];
-        y[z] = y[(z - 1)];
+      // Setting the colour of the snake part
+      snakeboard_ctx.fillStyle = snake_col;
+      // Setting the border colour of the snake part
+      snakeboard_ctx.strokestyle = snake_border;
+      // Drawing a "filled" rectangle to represent the snake on the coordinates
+      snakeboard_ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
+      // Drawing a border around the snake part
+      snakeboard_ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
     }
 
-    if (leftDirection) {
-
-        x[0] -= DOT_SIZE;
+    // drawing the food :p
+    function drawFood() {
+      snakeboard_ctx.fillStyle = 'lightblue';
+      snakeboard_ctx.strokestyle = 'darkgreen';
+      snakeboard_ctx.fillRect(food_x, food_y, 10, 10);
+      snakeboard_ctxstrokeRect(food_x, food_y, 10, 10);
     }
 
-    if (rightDirection) {
-
-        x[0] += DOT_SIZE;
+    function has_game_ended() {
+      for (let i = 4; < snake.length; i++) {
+        if (snake [i].x === snake [0].x && snake[i].y === snake [0].y) return true
+      }
+      const hitLeftWall = snake[0].x < 0;
+      const hitRightWall = snake[0].x > snakeboard.width - 10;
+      const hitToptWall = snake[0].y < 0;
+      const hitBottomWall = snake[0].y > snakeboard.height - 10;
+      return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
     }
 
-    if (upDirection) {
-
-        y[0] -= DOT_SIZE;
+    // new random food location 
+    function random_food(min, max) {
+        return Math.round((Math.random () * (max-min) + min) / 10 ) * 10;
     }
 
-    if (downDirection) {
-
-        y[0] += DOT_SIZE;
-    }
-}
-
-function checkCollision() {
-
-    for (var z = dots; z > 0; z--) {
-
-        if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z])) {
-            inGame = false;
-        }
+    function gen_food()
+    {
+      food_x = random_food(0, snakeboard.width - 10);
+      food_y = random_food(0, snakeboard.height - 10);
+      snake.forEach(function has _snake_eaten_food(part) {
+        const has_eaten = part.x == food_x && party.y == food_y;
+        if (has_eaten) gen_food();
+      });
     }
 
-    if (y[0] >= C_HEIGHT) {
+    function change_direction(event) {
+      const LEFT_KEY = 37;
+      const RIGHT_KEY = 39;
+      const UP_KEY = 38;
+      const DOWN_KEY = 40;
 
-        inGame = false;
+     // Prevent the snake from reversing
+    
+      if (changing_direction) return;
+      changing_direction = true;
+      const keyPressed = event.keyCode;
+      const goingUp = dy === -10;
+      const goingDown = dy === 10;
+      const goingRight = dx === 10;
+      const goingLeft = dx === -10;
+      if (keyPressed === LEFT_KEY && !goingRight) {
+        dx = -10;
+        dy = 0;
+      }
+      if (keyPressed === UP_KEY && !goingDown) {
+        dx = 0;
+        dy = -10;
+      }
+      if (keyPressed === RIGHT_KEY && !goingLeft) {
+        dx = 10;
+        dy = 0;
+      }
+      if (keyPressed === DOWN_KEY && !goingUp) {
+        dx = 0;
+        dy = 10;
+      }
     }
 
-    if (y[0] < 0) {
-
-       inGame = false;
+    function move_snake() {
+      // Snake's head
+      const head = {x: snake[0].x + dx, y: snake[0] + dy};
+      // Add head to body
+      snake.unshift(head);
+      snake.pop();
     }
 
-    if (x[0] >= C_WIDTH) {
-
-      inGame = false;
-    }
-
-    if (x[0] < 0) {
-
-      inGame = false;
-    }
-}
-
-function locateApple() {
-
-    var r = Math.floor(Math.random() * MAX_RAND);
-    apple_x = r * DOT_SIZE;
-
-    r = Math.floor(Math.random() * MAX_RAND);
-    apple_y = r * DOT_SIZE;
-}
-
-function gameCycle() {
-
-    if (inGame) {
-
-        checkApple();
-        checkCollision();
-        move();
-        doDrawing();
-        setTimeout("gameCycle()", DELAY);
-    }
-}
-
-onkeydown = function(e) {
-
-    var key = e.keyCode;
-
-    if ((key == LEFT_KEY) && (!rightDirection)) {
-
-        leftDirection = true;
-        upDirection = false;
-        downDirection = false;
-    }
-
-    if ((key == RIGHT_KEY) && (!leftDirection)) {
-
-        rightDirection = true;
-        upDirection = false;
-        downDirection = false;
-    }
-
-    if ((key == UP_KEY) && (!downDirection)) {
-
-        upDirection = true;
-        rightDirection = false;
-        leftDirection = false;
-    }
-
-    if ((key == DOWN_KEY) && (!upDirection)) {
-
-        downDirection = true;
-        rightDirection = false;
-        leftDirection = false;
-    }
-};
+    document.addEventListener("DOMContentLoaded", function () {
+        pTag = document.querySelector("div");
+        newVal = document.createElement("p");
+        newVal.innerHTML = '';
+        pTag.appendChild(newVal);
+    });
+    // Async Tests Example
+    /*
+    window.onModulesLoaded = new Promise( function( resolve, reject ) {
+      setTimeout(function() {
+        pTag = document.querySelector("div");
+        pTag.innerHTML = '';
+        newVal = document.createElement("p");
+        newVal.innerHTML = 'Hello World';
+        pTag.appendChild(newVal);
+        resolve();
+      }, 100)
+    });
+    */
