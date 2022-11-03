@@ -16,7 +16,7 @@ permalink: /snake-game
   <body>
     <!--setting the canvas up as a id and canvas size-->
     <canvas id="snakeboard" width="400" height="400"></canvas>
-    <script src="assets/js/snake-game-og"></script>
+    <script src="assets/js/snake-game-og.js"></script>
 
   <!--setting up the position of the board/canvas-->
     <style>
