@@ -187,7 +187,7 @@ permalink: /snake-game
       killblocks_y = random_killblocks(0, snakeboard.height - 10);
       snake.forEach(function has_snake_hit_killblock(part) {
         const hit_killblock = snake.pop();
-        if (has_eaten) gen_food();
+        if (has_eaten) gen_killblocks();
       });
     }
 
