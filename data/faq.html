@@ -8,8 +8,8 @@
 <meta name="generator" content="Jekyll v4.1.1" />
 <meta property="og:title" content="Fetch of Backend FAQ" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="An example of Frontend talking to Backend Python application serving jokes. This example provides the ability to react to the question (helpful or not)." />
-<meta property="og:description" content="An example of Frontend talking to Backend Python application serving jokes. This example provides the ability to react to the question (helpful or not)." />
+<meta name="description" content="This is our frontend fetching the FAQ data from the backend. This allows viewers to react to the question (helpful or not)." />
+<meta property="og:description" content="This is our frontend fetching the FAQ data from the backend. This allows viewers to react to the question (helpful or not)." />
 <link rel="canonical" href="https://najaafonseca.github.io/FriendshipTable-/data/faq" />
 <meta property="og:url" content="https://najaafonseca.github.io/FriendshipTable-/data/faq" />
 <meta property="og:site_name" content="FRIENDSHIP TABLE" />
@@ -18,7 +18,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Fetch of Backend FAQ" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-11-02T00:00:00-05:00","datePublished":"2022-11-02T00:00:00-05:00","description":"An example of Frontend talking to Backend Python application serving jokes. This example provides the ability to react to the question (helpful or not).","headline":"Fetch of Backend FAQ","mainEntityOfPage":{"@type":"WebPage","@id":"https://najaafonseca.github.io/FriendshipTable-/data/faq"},"url":"https://najaafonseca.github.io/FriendshipTable-/data/faq"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-11-02T00:00:00-05:00","datePublished":"2022-11-02T00:00:00-05:00","description":"This is our frontend fetching the FAQ data from the backend. This allows viewers to react to the question (helpful or not).","headline":"Fetch of Backend FAQ","mainEntityOfPage":{"@type":"WebPage","@id":"https://najaafonseca.github.io/FriendshipTable-/data/faq"},"url":"https://najaafonseca.github.io/FriendshipTable-/data/faq"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/FriendshipTable-/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://najaafonseca.github.io/FriendshipTable-/feed.xml" title="FRIENDSHIP TABLE" /><link rel="shortcut icon" type="image/x-icon" href="/FriendshipTable-/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -129,7 +129,7 @@ window.onload = wrap_img;
             // make "tr element" for each "row of data"
             const tr = document.createElement("tr");
             
-            // td for joke cell
+            // td for question cell
             const question = document.createElement("td");
               question.innerHTML = row.id + ". " + row.question;  // add fetched data to innerHTML
 
