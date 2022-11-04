@@ -30,7 +30,6 @@ permalink: /snake-game
         text-align: center;
         font-size: 140px;
       }
-      }
 
   <!--linking the javascript page to the html snake md page-->
     <script src="assets/js/snake2.js"></script>
