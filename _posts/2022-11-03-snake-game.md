@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Snake Game :)
 author: Naja Fonseca
 permalink: /snake-game
@@ -15,8 +14,10 @@ permalink: /snake-game
   <body>
 
     <div id="score">0</div>
+  <!--setting up the canvas-->
     <canvas id="snakeboard" width="400" height="400"></canvas>
 
+  <!--making the snakeboard and scoreboard-->
     <style>
       #snakeboard {
         position: absolute;
@@ -27,14 +28,17 @@ permalink: /snake-game
       #score {
         text-align: center;
         font-size: 140px;
+        text: score;
       }
 
+  <!--linking the javascript page to the html snake md page-->
     <script src="assets/js/snake2.js"></script>
 
     </style>
   </body>
 
   <script>
+    // Beautifying the border and snake
     const board_border = 'black';
     const board_background = "white";
     const snake_col = 'lightblue';
@@ -59,22 +63,24 @@ permalink: /snake-game
     let dy = 0;
     
     
-    // Get the canvas element
+    // Get the canvas element (turns into an object)
     const snakeboard = document.getElementById("snakeboard");
-    // Return a two dimensional drawing context
+    // Return a two dimensional drawing context (makes board 2d)
     const snakeboard_ctx = snakeboard.getContext("2d");
-    // Start game
+    // Start the game!
     main();
 
+    // setting up generating food
     gen_food();
 
+    // adding the keydown event listener
     document.addEventListener("keydown", change_direction);
     
     // main function called repeatedly to keep the game running
     function main() {
 
         if (has_game_ended()) return;
-
+        // stop the snake from moving if game ends
         changing_direction = false;
         setTimeout(function onTick() {
         clear_board();
@@ -100,10 +106,11 @@ permalink: /snake-game
     
     // Draw the snake on the canvas
     function drawSnake() {
-      // Draw each part
+      // Draw each part of the snake
       snake.forEach(drawSnakePart)
     }
 
+    // styling and creating the food
     function drawFood() {
       snakeboard_ctx.fillStyle = 'lightgreen';
       snakeboard_ctx.strokestyle = 'darkgreen';
@@ -125,6 +132,7 @@ permalink: /snake-game
       snakeboard_ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
     }
 
+    // if the game ends stop all of the snake movement
     function has_game_ended() {
       for (let i = 4; i < snake.length; i++) {
         if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true
@@ -136,10 +144,12 @@ permalink: /snake-game
       return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
     }
 
+
     function random_food(min, max) {
       return Math.round((Math.random() * (max-min) + min) / 10) * 10;
     }
 
+    // function to generate food in random areas
     function gen_food() {
       // Generate a random number the food x-coordinate
       food_x = random_food(0, snakeboard.width - 10);
@@ -152,14 +162,15 @@ permalink: /snake-game
       });
     }
 
+    // setting up constant references for arrow keys
     function change_direction(event) {
       const LEFT_KEY = 37;
       const RIGHT_KEY = 39;
       const UP_KEY = 38;
       const DOWN_KEY = 40;
       
-    // Prevent the snake from reversing
     
+    // Prevent the snake from reversing in all directions
       if (changing_direction) return;
       changing_direction = true;
       const keyPressed = event.keyCode;
@@ -185,6 +196,8 @@ permalink: /snake-game
       }
     }
 
+    // moving the snake and adding to its body if it eats
+    // adding score if the snake eats
     function move_snake() {
       // Create the new Snake's head
       const head = {x: snake[0].x + dx, y: snake[0].y + dy};
