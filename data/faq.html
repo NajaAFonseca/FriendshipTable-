@@ -84,13 +84,13 @@ window.onload = wrap_img;
   </tbody>
 </table>
 
-<!-- Script is layed out in a sequence (without a function) and will execute when page is loaded -->
+<!-- Script will execute when page is loaded -->
 <script>
 
   // prepare HTML defined "result" container for new output
   const resultContainer = document.getElementById("result");
 
-  // keys for joke reactions
+  // keys for question reactions
   const YES = "Helpful";
   const NO = "Not Helpful";
 
@@ -153,9 +153,9 @@ window.onload = wrap_img;
                 // onclick function call with "unhelpful parameters"
                 reaction(NO, bad_url+row.id, unhelpful_but.id);  
               };
-              unhelpful.appendChild(unhelpful_but);  // add "unhelpful button" to boohoo cell
+              unhelpful.appendChild(unhelpful_but);  // add "unhelpful button" to unhelpful cell
              
-            // this builds ALL td's (cells) into tr (row) element
+            // this builds ALL td's, or cells, into tr (row) element
             tr.appendChild(Question);
             tr.appendChild(helpful);
             tr.appendChild(unhelpful);
