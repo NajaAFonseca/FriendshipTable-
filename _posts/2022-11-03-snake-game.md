@@ -9,6 +9,7 @@ permalink: /snake-game
   <head>
     <!--titling our game-->
   	<title>Snake Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Antic+Slab" rel="stylesheet">
   </head>
 
   <body>
@@ -28,7 +29,6 @@ permalink: /snake-game
       #score {
         text-align: center;
         font-size: 140px;
-      }
       }
 
   <!--linking the javascript page to the html snake md page-->
@@ -61,15 +61,6 @@ permalink: /snake-game
     let dx = 10;
     // Vertical velocity
     let dy = 0;
-
-    let playAgain = document.querySelector(".playAgain");
-
-    document.addEventListener("DOMContentLoaded", function () {
-      document.addEventListener("keyup", control);
-      createBoard();
-      startGame();
-      playAgain.addEventListener("click", replay);
-    });
 
     // Get the canvas element (turns into an object)
     const snakeboard = document.getElementById("snakeboard");
@@ -153,6 +144,7 @@ permalink: /snake-game
     }
 
 
+    // return numbers with highest and lowest values
     function random_food(min, max) {
       return Math.round((Math.random() * (max-min) + min) / 10) * 10;
     }
