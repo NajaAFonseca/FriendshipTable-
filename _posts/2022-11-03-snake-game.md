@@ -72,6 +72,9 @@ permalink: /snake-game
     // setting up generating food
     gen_food();
 
+    // setting up red blocks
+    gen_killblocks();
+
     // adding the keydown event listener
     document.addEventListener("keydown", change_direction);
     
@@ -116,6 +119,14 @@ permalink: /snake-game
       snakeboard_ctx.fillRect(food_x, food_y, 10, 10);
       snakeboard_ctx.strokeRect(food_x, food_y, 10, 10);
     }
+
+    // styling killblock
+    function drawKillblocks() {
+      snakeboard_ctx.fillStyle = 'red';
+      snakeboard_ctx.strokestyle = 'black';
+      snakeboard_ctx.fillRect(killblocks_x, killblocks_y, 10, 10);
+      snakeboard_ctx.strokeRect(killblocks_x, killblocks_y, 10, 10);
+    }
     
     // Draw one snake part
     function drawSnakePart(snakePart) {
@@ -140,12 +151,21 @@ permalink: /snake-game
       const hitRightWall = snake[0].x > snakeboard.width - 10;
       const hitToptWall = snake[0].y < 0;
       const hitBottomWall = snake[0].y > snakeboard.height - 10;
+      const hitKillblocks = snake[0].x < 0;
+      const hitKillblocks = snake[0].x > snakeboard.width - 10;
+      const hitKillblocks = snake[0].y < 0;
+      const hitKillblocks = snake[0].y > snakeboard.height - 10;
       return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
     }
 
 
     // return numbers with highest and lowest values
     function random_food(min, max) {
+      return Math.round((Math.random() * (max-min) + min) / 10) * 10;
+    }
+
+    //return numbers with highest and lowest values
+    function random_killblocks(min, max) {
       return Math.round((Math.random() * (max-min) + min) / 10) * 10;
     }
 
@@ -158,6 +178,15 @@ permalink: /snake-game
       // if the new food location is where the snake currently is, generate a new food location
       snake.forEach(function has_snake_eaten_food(part) {
         const has_eaten = part.x == food_x && part.y == food_y;
+        if (has_eaten) gen_food();
+      });
+    }
+
+    function gen_killblock() {
+      killblocks_x = random_killblocks(0, snakeboard.width - 10);
+      killblocks_y = random_killblocks(0, snakeboard.height - 10);
+      snake.forEach(function has_snake_hit_killblock(part) {
+        const hit_killblock = snake.pop();
         if (has_eaten) gen_food();
       });
     }
