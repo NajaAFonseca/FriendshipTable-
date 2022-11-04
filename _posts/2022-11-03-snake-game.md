@@ -9,6 +9,7 @@ permalink: /snake-game
   <head>
     <!--titling our game-->
   	<title>Snake Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Antic+Slab" rel="stylesheet">
   </head>
 
   <body>
@@ -144,6 +145,7 @@ permalink: /snake-game
     }
 
 
+    // return numbers with highest and lowest values
     function random_food(min, max) {
       return Math.round((Math.random() * (max-min) + min) / 10) * 10;
     }
