@@ -91,13 +91,13 @@ window.onload = wrap_img;
   const resultContainer = document.getElementById("result");
 
   // keys for joke reactions
-  const HAHA = "haha";
-  const BOOHOO = "boohoo";
+  const YES = "Helpful";
+  const NO = "Not Helpful";
 
   // prepare fetch urls
   const url = "https://friendship.nighthawkcodingteams.cf/api/faq";
-  const like_url = url + "/like/";  // haha reaction
-  const jeer_url = url + "/jeer/";  // boohoo reaction
+  const helpful_url = url + "/helpful/";  // helpful reaction
+  const bad_url = url + "/bad/";  // not helpful reaction
 
   // prepare fetch GET options
   const options = {
@@ -130,35 +130,35 @@ window.onload = wrap_img;
             const tr = document.createElement("tr");
             
             // td for joke cell
-            const joke = document.createElement("td");
-              joke.innerHTML = row.id + ". " + row.joke;  // add fetched data to innerHTML
+            const question = document.createElement("td");
+              question.innerHTML = row.id + ". " + row.question;  // add fetched data to innerHTML
 
-            // td for haha cell with onclick actions
-            const haha = document.createElement("td");
-              const haha_but = document.createElement('button');
-              haha_but.id = HAHA+row.id   // establishes a HAHA JS id for cell
-              haha_but.innerHTML = row.haha;  // add fetched "haha count" to innerHTML
-              haha_but.onclick = function () {
-                // onclick function call with "like parameters"
-                reaction(HAHA, like_url+row.id, haha_but.id);  
+            // td for helpful cell with onclick actions
+            const helpful = document.createElement("td");
+              const helpful_but = document.createElement('button');
+              helpful_but.id = YES+row.id   // establishes a YES JS id for cell
+              helpful_but.innerHTML = row.helpful;  // add fetched "helpful count" to innerHTML
+              helpful_but.onclick = function () {
+                // onclick function call with "helpful parameters"
+                reaction(YES, like_url+row.id, helpful_but.id);  
               };
-              haha.appendChild(haha_but);  // add "haha button" to haha cell
+              helpful.appendChild(helpful_but);  // add "helpful button" to helpful cell
 
-            // td for boohoo cell with onclick actions
-            const boohoo = document.createElement("td");
-              const boohoo_but = document.createElement('button');
-              boohoo_but.id = BOOHOO+row.id  // establishes a BOOHOO JS id for cell
-              boohoo_but.innerHTML = row.boohoo;  // add fetched "boohoo count" to innerHTML
-              boohoo_but.onclick = function () {
-                // onclick function call with "jeer parameters"
-                reaction(BOOHOO, jeer_url+row.id, boohoo_but.id);  
+            // td for unhelpful cell with onclick actions
+            const unhelpful = document.createElement("td");
+              const unhelpful_but = document.createElement('button');
+              unhelpful_but.id = NO+row.id  // establishes a NO JS id for cell
+              unhelpful_but.innerHTML = row.unhelpful;  // add fetched "unhelpful count" to innerHTML
+              unhelpful_but.onclick = function () {
+                // onclick function call with "unhelpful parameters"
+                reaction(NO, bad_url+row.id, unhelpful_but.id);  
               };
-              boohoo.appendChild(boohoo_but);  // add "boohoo button" to boohoo cell
+              unhelpful.appendChild(unhelpful_but);  // add "unhelpful button" to boohoo cell
              
             // this builds ALL td's (cells) into tr (row) element
-            tr.appendChild(joke);
-            tr.appendChild(haha);
-            tr.appendChild(boohoo);
+            tr.appendChild(Question);
+            tr.appendChild(helpful);
+            tr.appendChild(unhelpful);
 
             // this adds all the tr (row) work above to the HTML "result" container
             resultContainer.appendChild(tr);
@@ -170,7 +170,7 @@ window.onload = wrap_img;
     error(err + " " + url);
   });
 
-  // Reaction function to likes or jeers user actions
+  // Reaction function to helpful or unhelpful user actions
   function reaction(type, put_url, elemID) {
 
     // fetch the API
@@ -185,13 +185,13 @@ window.onload = wrap_img;
       // valid response will have JSON data
       response.json().then(data => {
           console.log(data);
-          // Likes or Jeers updated/incremented
-          if (type === HAHA) // like data element
-            document.getElementById(elemID).innerHTML = data.haha;  // fetched haha data assigned to haha Document Object Model (DOM)
-          else if (type === BOOHOO) // jeer data element
-            document.getElementById(elemID).innerHTML = data.boohoo;  // fetched boohoo data assigned to boohoo Document Object Model (DOM)
+          // Helpful or Unhelpful responses updated/incremented
+          if (type === YES) // helpful data element
+            document.getElementById(elemID).innerHTML = data.helpful;  // fetched helpful data assigned to helpful Document Object Model (DOM)
+          else if (type === NO) // unhelpful data element
+            document.getElementById(elemID).innerHTML = data.unhelpful;  // fetched unhelpful data assigned to unhelpful Document Object Model (DOM)
           else
-            error("unknown type: " + type);  // should never occur
+            error("unknown type: " + type);  // should not occur
       })
     })
     // catch fetch errors (ie Nginx ACCESS to server blocked)
